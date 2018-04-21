@@ -6,24 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/f.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>資工讀書會 - 首頁</title>
 </head>
 
 <body>
     <div class="nav-wrap">
         <div class="nav">
-            <svg fill="#FFFFFF" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 0h24v24H0z" fill="none" />
-                <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z" />
-            </svg>
-            <a href="/">首頁BETA</a>
-            <a href="homework.html">作業</a>
-            <a href="https://script.google.com/a/mail.nuk.edu.tw/macros/s/AKfycbxUEyk4-PpoPaaMgvjlQrcjcYyyJJ84cDUAKqJLS4DGtXPn5XQ/exec">交作業</a>
-            <a href="projects.html">作品</a>
-            <a href="course.html">教材</a>
-            <a href="resource.html">資源</a>
-            <a href="http://hackfoldr.org/nukcsie_oj/">舊網站</a>
+            <div class="dropdown">
+                <a onclick="dropDownMenu()" class="dropbtn"><i onclick="dropDownMenu()" class="material-icons ">menu</i></a>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="/">首頁</a>
+                    <a href="homework.html">作業</a>
+                    <a href="https://script.google.com/a/mail.nuk.edu.tw/macros/s/AKfycbxUEyk4-PpoPaaMgvjlQrcjcYyyJJ84cDUAKqJLS4DGtXPn5XQ/exec">交作業</a>
+                    <a href="projects.html">作品</a>
+                    <a href="course.html">教材</a>
+                    <a href="resource.html">資源</a>
+                    <a href="http://hackfoldr.org/nukcsie_oj/">舊網站</a>
+                </div> 
+            </div>
+            <h2 class="title">首頁</h2>
         </div>
+
+    </div>
         <div class="content">
             <h2>程設讀書會說明</h2>
             <br>
