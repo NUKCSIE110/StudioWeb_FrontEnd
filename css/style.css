@@ -225,13 +225,104 @@ a i{
     color: rgb(87, 210, 226);
     transition: 0.5s;
 }
+
+
+.dropbtn {
+    background-color: rgb(0, 188, 212);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 180px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+.title{
+    display: inline-block;
+    color: white;
+    font-size: 25px;
+    text-align: center;
+}
+
+
+@media(min-width:768px){
+    .large-screen{
+        display: block;
+    }
+    .dropdown{
+        display: none;
+    }
+    .title{
+        display: none;
+    }
+    .nav{
+    background: rgb(0, 188, 212);
+    height: 50px;
+    width: 100%;
+    padding-left: 10px;
+    position: fixed;
+    box-shadow: 0 2px 5px rgba(0,0,0,.26);
+    overflow: auto;
+    white-space: nowrap;
+}
+
+    .nav a{
+    display: inline-block;
+    padding: calc((50px - 1em)/2) 15px;
+    color: white;
+    text-decoration: none;
+    
+    }
+    .nav a:hover{
+    background: rgb(33, 193, 214);
+    transition: 0.5s;
+    box-shadow: 0px -3px 0px #fff inset;
+    }
+    .nav a:active{
+
+        transition: 0.5s;
+    }
+}
 @media(max-width:1280px){
     .content{
         width:90%;
     }
     
 }
-@media(max-width:768px){
+@media(max-width:767px){
+    .large-screen{
+        display: none;
+    }
+    .nav{
+    overflow: visible;
+    }
     .content{
         width:95%;
     }
@@ -284,51 +375,7 @@ a i{
     background: #00BCD4;
     transition: 0.5s;
 }
-.title{
-    display: inline-block;
-    color: white;
-    font-size: 25px;
-    text-align: center;
-}
 
 code{
     font-family: Consolas, monaco, monospace, 'Noto Sans TC';
 }
-
-
-.dropbtn {
-    background-color: rgb(0, 188, 212);
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-    position: relative;
-    display: inline-block;
-    margin-top: 5px;
-}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 180px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #ddd}
-
-/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-.show {display:block;}
