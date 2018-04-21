@@ -34,6 +34,7 @@ body {
 	line-height: 1;
     font-family: 'Noto Sans TC', sans-serif;
     margin-bottom: 50px;
+    background-color: #EEEDEF;
 }
 ol, ul {
 	list-style: none;
@@ -79,6 +80,11 @@ a{
 a:hover{
     color: rgb(87, 210, 226);
     transition: 0.5s;
+}
+.content{
+    background: #fff;
+    padding: 0px 5%;
+    box-shadow: 0px 1px 2px 1px #D3D2D3;
 }
 .proj-list{
     border-collapse: collapse;
