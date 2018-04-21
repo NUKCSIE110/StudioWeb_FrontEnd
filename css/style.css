@@ -1,7 +1,7 @@
 
 @font-face {
     font-family: 'Noto Sans TC';
-    src: url("../font/NotoSansTC-Regular.otf ") format("opentype");
+    src: url("../font/NotoSansTC-Regular.otf ") format("opentype"),
           url("../font/NotoSansTC-Bold.otf ") format("opentype");
 
 }
@@ -69,6 +69,14 @@ code{
     font-family: Consolas, monaco, monospace;
     line-height: 1.3em;
 }
+a{
+    color: rgb(0, 156, 177);
+}
+a:hover{
+    color: rgb(87, 210, 226);
+    transition: 0.5s;
+}
+
 .nav-wrap{
     position: relative;
 }
