@@ -228,7 +228,7 @@ tr{
     color: rgb(87, 210, 226);
     transition: 0.5s;
 }
-.footer{
+.footer p{
     color: rgb(145, 145, 145);
     text-align: center;
     margin-top: 3em;
