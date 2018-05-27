@@ -1,0 +1,11 @@
+body{
+    background-image: url(../img/pets-3389730_1280.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+h1,p{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    text-align: center;
+    font-size: 3em;
+}
