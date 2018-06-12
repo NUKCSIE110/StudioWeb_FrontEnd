@@ -1,0 +1,17 @@
+#page1 .bg::before{
+    background-image: url("https://i.imgur.com/t3fqcOR.jpg");
+}
+
+#page1 h1{
+    font-size: 5vh;
+    color: white;
+    background: rgba(0,0,0,0.5);
+    height: 3em;
+    max-width: 100%;
+    padding-top: 1em;
+    box-sizing: border-box;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: calc( 50vh - 1.5em );
+    border-radius: 0.2em;
+}
