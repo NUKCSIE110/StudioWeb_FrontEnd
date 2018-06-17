@@ -10,10 +10,12 @@ function init(){
                 console.log('scrolling down !');
             }
             $('#page1').slideToggle(1000);
+            $('#nav-arrow').toggleClass("black bounce");
             setTimeout(()=>{$('body').data('scrolling', false)}, 400);
         }
     });
     $('.next-page').on('click',function(){
         $('#page1').slideToggle(1000);
+        $('#nav-arrow').toggleClass("black bounce");
     });
 }

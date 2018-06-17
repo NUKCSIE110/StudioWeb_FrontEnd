@@ -1,7 +1,7 @@
 html, body{
     padding: 0;
     margin: 0;
-    background: #000;
+    background: #FFF;
 }
 section{
     display: block;
@@ -19,10 +19,14 @@ section{
     margin: 0 auto;
     margin-left: -0.5em;
     padding-top: 10vh;
-    bottom: 0;
+    bottom: 1vh;
     left: 50%;
     font-size: 5vh;
+    transition: color 2s;
     color: white;
+}
+.black{
+    color: black;
 }
 .bounce{
     animation: bounce 0.5s infinite alternate ease-out;
