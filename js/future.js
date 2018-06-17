@@ -8,6 +8,11 @@ var pages = [
         'sectionID': '#page2',
         'DarkBg': false,
         'enterPoint': function(){}
+    },
+    {
+        'sectionID': '#page3',
+        'DarkBg': false,
+        'enterPoint': function(){}
     }
 ]
 
@@ -21,15 +26,16 @@ function init(){
             }
             else{
                 console.log('scrolling down !');
-                transitPage(pages[0], pages[1]);
+                transitPage(pages[$('body').data('nowPage')], pages[$('body').data('nowPage')+1]);
             }
             setTimeout(()=>{$('body').data('scrolling', false)}, 400);
         }
     });
     $('.next-page').on('click',function(){
-        transitPage(pages[0], pages[1]);
+        transitPage(pages[$('body').data('nowPage')], pages[$('body').data('nowPage')+1]);
     });
     var p = window.location.hash.substr(1) || 0;
+    $('body').data('nowPage', p);
     for(var i of pages){
         $(i.sectionID).hide();
     }
@@ -42,6 +48,13 @@ function transitPage(a,b){
     $(b.sectionID).css("z-index", "-2");
     $(b.sectionID).show();
     $(a.sectionID).slideUp(1000)
+    
+    // Hide nav arrow on the last page
+    var p = $('body').data('nowPage');
+    $('body').data('nowPage', p+1);
+    if(p+1==(pages.length)-1){
+        $('#nav-arrow').hide();
+    }
     setTimeout(()=>$(b.sectionID).css("z-index", ""), 1000);
 
     if(a.DarkBg != b.DarkBg){

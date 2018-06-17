@@ -27,7 +27,6 @@
     padding-top: 1em;
     box-sizing: border-box;
     text-align: center;
-    margin: 0 auto;
     margin-top: calc( 50vh - 1.5em );
     border-radius: 0.2em;
 }

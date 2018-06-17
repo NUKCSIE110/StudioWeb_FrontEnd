@@ -3,6 +3,10 @@ html, body{
     margin: 0;
     background: #FFF;
 }
+.central{
+    margin: 0 auto;
+}
+
 section{
     display: block;
     margin: 0;
@@ -16,7 +20,6 @@ section{
     box-sizing: border-box;
     height: 3em;
     position: fixed;
-    margin: 0 auto;
     margin-left: -0.5em;
     padding-top: 10vh;
     bottom: 1vh;
