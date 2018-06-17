@@ -8,14 +8,26 @@ function init(){
             }
             else{
                 console.log('scrolling down !');
+                transitPage();
             }
-            $('#page1').slideToggle(1000);
-            $('#nav-arrow').toggleClass("black bounce");
             setTimeout(()=>{$('body').data('scrolling', false)}, 400);
         }
     });
     $('.next-page').on('click',function(){
-        $('#page1').slideToggle(1000);
-        $('#nav-arrow').toggleClass("black bounce");
+        transitPage();
     });
+}
+
+function transitPage(){
+    $('#page1').slideToggle(1000);
+    $('#nav-arrow').toggleClass("black");
+    landArrow();
+}
+
+function landArrow(){
+    var nowPos = $('#nav-arrow').css("padding-top");
+    //console.log(nowPos);
+    $('#nav-arrow').removeClass("bounce");
+    $('#nav-arrow').css("padding-top", nowPos);
+    setTimeout(()=>$('#nav-arrow').css("padding-top", "10vh"), 1);
 }

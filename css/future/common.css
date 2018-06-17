@@ -22,7 +22,7 @@ section{
     bottom: 1vh;
     left: 50%;
     font-size: 5vh;
-    transition: color 2s;
+    transition: color 2s, padding 1s;
     color: white;
 }
 .black{
