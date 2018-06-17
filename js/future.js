@@ -1,3 +1,16 @@
+var pages = [
+    {
+        'sectionID': '#page1',
+        'DarkBg': true,
+        'enterPoint': function(){}
+    },
+    {
+        'sectionID': '#page2',
+        'DarkBg': false,
+        'enterPoint': function(){}
+    }
+]
+
 $(document).ready(init);
 function init(){
     $(window).bind('mousewheel', function(e){
@@ -8,19 +21,28 @@ function init(){
             }
             else{
                 console.log('scrolling down !');
-                transitPage();
+                transitPage(pages[0], pages[1]);
             }
             setTimeout(()=>{$('body').data('scrolling', false)}, 400);
         }
     });
     $('.next-page').on('click',function(){
-        transitPage();
+        transitPage(pages[0], pages[1]);
     });
+    for(var i of pages){
+        $(i.sectionID).hide();
+    }
+    $(pages[0].sectionID).show();
 }
+function transitPage(a,b){
+    $(b.sectionID).css("z-index", "-2");
+    $(b.sectionID).show();
+    $(a.sectionID).slideUp(1000)
+    setTimeout(()=>$(b.sectionID).css("z-index", ""), 1000);
 
-function transitPage(){
-    $('#page1').slideToggle(1000);
-    $('#nav-arrow').toggleClass("black");
+    if(a.DarkBg != b.DarkBg){
+        $('#nav-arrow').toggleClass("black");
+    }
     landArrow();
 }
 
@@ -29,5 +51,6 @@ function landArrow(){
     //console.log(nowPos);
     $('#nav-arrow').removeClass("bounce");
     $('#nav-arrow').css("padding-top", nowPos);
+    /* Transit using pure css */
     setTimeout(()=>$('#nav-arrow').css("padding-top", "10vh"), 1);
 }

@@ -1,0 +1,4 @@
+#page2 .bg::before{
+    background: #FFF;
+    filter:none;
+}
