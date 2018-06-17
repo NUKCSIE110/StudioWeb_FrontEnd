@@ -9,6 +9,7 @@ section{
     position: absolute;
     width: 100%;
     height: 100vh; /* != 100% fix mobile address bar */ 
+    overflow: hidden;
 }
 .next-page{
     display: block;
