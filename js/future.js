@@ -29,10 +29,14 @@ function init(){
     $('.next-page').on('click',function(){
         transitPage(pages[0], pages[1]);
     });
+    var p = window.location.hash.substr(1) || 0;
     for(var i of pages){
         $(i.sectionID).hide();
     }
-    $(pages[0].sectionID).show();
+    $(pages[p].sectionID).show();
+    if(pages[p].DarkBg != true){
+        $('#nav-arrow').addClass("black");
+    }
 }
 function transitPage(a,b){
     $(b.sectionID).css("z-index", "-2");
