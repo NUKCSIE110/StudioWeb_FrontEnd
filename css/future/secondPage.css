@@ -2,3 +2,17 @@
     background: #FFF;
     filter:none;
 }
+
+#page2 p{
+    width: 16em;
+    margin: 0 auto;
+    font-size: 30px;
+    margin-top: 5vh;
+}
+
+@media only screen and (max-width: 960px){
+    #page2 p{
+        font-size: 5vw;
+        width: 16em;
+    }
+}
