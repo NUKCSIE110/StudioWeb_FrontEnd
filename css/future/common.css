@@ -29,6 +29,7 @@ section{
     font-size: 5vh;
     transition: color 2s, padding 1s;
     color: white;
+    cursor: pointer;
 }
 .black{
     color: black;
