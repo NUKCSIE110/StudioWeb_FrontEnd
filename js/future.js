@@ -60,6 +60,7 @@ function init(){
         $('#nav-arrow').addClass("black");
     }
     pages[p].enterPoint();
+    setTimeout(()=>window.scrollTo(0,1),0);
     //landArrow();
 }
 function transitPage(a,b){
