@@ -61,3 +61,9 @@ section{
     0%{ padding-top: 10vh; }
     100%{ padding-top: 0px; }
 }
+
+@media only screen and (max-width: 756px){
+    .next-page{
+        cursor: inherit;
+    }
+}

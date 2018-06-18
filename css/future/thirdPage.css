@@ -76,5 +76,8 @@
     }
     #page3 h1+.char{
         margin: 5vh auto 0 auto;
-    }    
+    }
+    #page3 .char{
+        cursor: inherit;
+    }   
 }
