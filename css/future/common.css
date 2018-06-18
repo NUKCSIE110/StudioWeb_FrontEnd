@@ -6,7 +6,9 @@ html, body{
 .central{
     margin: 0 auto;
 }
-
+.clear{
+    clear: both;
+}
 section{
     display: block;
     margin: 0;

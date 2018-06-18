@@ -11,13 +11,13 @@
 #page3 .char{
     float: left;
     width: 30vw;
-    height: 60vh;
     box-sizing: border-box;
     /*border: solid 1px #1A1A1A;*/
     text-align: center;
+    cursor: pointer;
 }
 
-#page3 .char:not(:last-child){
+#page3 .char:first-child{
     margin-right: 5vw;
 }
 
@@ -31,6 +31,10 @@
     height: 100%;
 }
 
+#page3 .selected .photo img{
+    box-shadow: 0px 0px 20px rgb(6, 85, 255);
+}
+
 #page3 .name{
     font-size: 5vh;
     margin-top: 0.5em;
@@ -39,4 +43,42 @@
 #page3 .discription{
     font-size: 2vh;
     margin-top: 1em;
+}
+
+#page3 .coin{
+    width: 6em;
+    height: 1.6em;
+    padding-top: 0.3em;
+    margin-top: 1em;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 50px;
+    color: white;
+    background: rgb(23, 123, 255);
+    border-radius: 0.4em;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 1000px){
+    #page3 .name{
+        font-size: 5vw;
+        margin-top: 0.5em;
+    }
+    #page3 .coin{
+        font-size: 5vw;
+    }
+}
+@media only screen and (max-width: 756px){
+    #page3>.central{
+        margin-top: 0;
+    }
+    #page3 .char{
+        float: none;
+        width: 40vw;
+        margin: 0 auto;
+        margin-top: 5vh;
+    }
+    #page3 .char:first-child{
+        margin: 5vh auto 0 auto;
+    }    
 }
