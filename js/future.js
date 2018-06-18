@@ -80,7 +80,7 @@ function landArrow(){
     setTimeout(()=>$('#nav-arrow').css("padding-top", "10vh"), 1);
     setTimeout(() => {
         $('#nav-arrow').css("transition", "color 2s");
-        $('#nav-arrow').css("padding-top", "0px");
-        $('#nav-arrow').css("height", "1em");
+        $('#nav-arrow').css("padding-top", "1em");
+        $('#nav-arrow').css("height", "2em");
     }, 1500);
 }

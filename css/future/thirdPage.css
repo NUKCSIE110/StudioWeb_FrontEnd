@@ -81,12 +81,12 @@
     }
     #page3 .char{
         float: none;
-        width: 22vh;
+        width: 40vw;
         margin: 0 auto;
         margin-top: 5vh;
     }
     #page3 h1{
-        margin-top: 2vh;
+        margin-top: 4vh;
     }
     #page3 h1+.char{
         margin: 5vh auto 0 auto;
