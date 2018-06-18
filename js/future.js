@@ -2,12 +2,18 @@ var pages = [
     {
         'sectionID': '#page1',
         'DarkBg': true,
-        'enterPoint': function(){}
+        'enterPoint': function(){},
+        'nextPage': function(){
+            return 1;
+        }
     },
     {
         'sectionID': '#page2',
         'DarkBg': false,
-        'enterPoint': function(){}
+        'enterPoint': function(){},
+        'nextPage': function(){
+            return 2;
+        }
     },
     {
         'sectionID': '#page3',
@@ -23,12 +29,18 @@ var pages = [
                 $('#charBuDo').addClass('selected');
                 $('#charDaLa').removeClass('selected');
             });
+        },
+        'nextPage': function(){
+            return 0;
         }
     },
     {
         'sectionID': '#page4',
         'DarkBg': false,
-        'enterPoint': function(){}
+        'enterPoint': function(){},
+        'nextPage': function(){
+            return 0;
+        }
     }
 ]
 
@@ -48,7 +60,7 @@ function init(){
         }
     });
     $('.next-page').on('click',function(){
-        transitPage(pages[$('body').data('nowPage')], pages[$('body').data('nowPage')+1]);
+        transitPage(pages[$('body').data('nowPage')].nextPage());
     });
     var p = window.location.hash.substr(1) || 0;
     $('body').data('nowPage', p);
@@ -63,15 +75,17 @@ function init(){
     setTimeout(()=>window.scrollTo(0,1),0);
     //landArrow();
 }
-function transitPage(a,b){
+function transitPage(newP){
+    var a = pages[$('body').data('nowPage')];
+    var b = pages[newP];
     $(b.sectionID).css("z-index", "-2");
     $(b.sectionID).show();
     $(a.sectionID).slideUp(1000)
     
     // Hide nav arrow on the last page
     var p = $('body').data('nowPage');
-    $('body').data('nowPage', p+1);
-    if(p+1==(pages.length)-1){
+    $('body').data('nowPage', newP);
+    if(b.nextPage==undefined){
         $('#nav-arrow').hide();
     }
     setTimeout(()=>$(b.sectionID).css("z-index", ""), 1000);
