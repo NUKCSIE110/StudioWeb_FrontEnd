@@ -19,15 +19,20 @@ var pages = [
         'sectionID': '#page3',
         'DarkBg': false,
         'enterPoint': function(){
+            $('#nav-arrow').fadeOut();
+            $('#charDaLa').removeClass('selected');
+            $('#charBuDo').removeClass('selected');
             $('#charDaLa').on('click',()=>{
                 $('body').data("char", "DaLa");
                 $('#charDaLa').addClass('selected');
                 $('#charBuDo').removeClass('selected');
+                $('#nav-arrow').fadeIn('slow');
             });
             $('#charBuDo').on('click',()=>{
                 $('body').data("char", "BuDo");
                 $('#charBuDo').addClass('selected');
                 $('#charDaLa').removeClass('selected');
+                $('#nav-arrow').fadeIn('slow');
             });
         },
         'nextPage': function(){
@@ -46,7 +51,7 @@ var pages = [
 
 $(document).ready(init);
 function init(){
-    $(window).bind('mousewheel', function(e){
+    /*$(window).bind('mousewheel', function(e){
         if(!($('body').data('scrolling') || false)){
             $('body').data('scrolling', true);
             if(e.originalEvent.wheelDelta /120 > 0) {
@@ -54,11 +59,11 @@ function init(){
             }
             else{
                 console.log('scrolling down !');
-                transitPage(pages[$('body').data('nowPage')], pages[$('body').data('nowPage')+1]);
+                transitPage(pages[$('body').data('nowPage')].nextPage());
             }
             setTimeout(()=>{$('body').data('scrolling', false)}, 400);
         }
-    });
+    });*/
     $('.next-page').on('click',function(){
         transitPage(pages[$('body').data('nowPage')].nextPage());
     });
