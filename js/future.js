@@ -36,13 +36,20 @@ var pages = [
             });
         },
         'nextPage': function(){
-            return 0;
+            return 3;
         }
     },
     {
-        'sectionID': '#page4',
-        'DarkBg': false,
-        'enterPoint': function(){},
+        'sectionID': '#story2',
+        'DarkBg': true,
+        'enterPoint': function(){
+            if($('body').data("char")=="DaLa"){
+                $('#story2 p span').text("達拉崩吧");
+            }
+            if($('body').data("char")=="BuDo"){
+                $('#story2 p span').text("卜多比魯翁");
+            }
+        },
         'nextPage': function(){
             return 0;
         }
@@ -78,7 +85,7 @@ function init(){
     }
     pages[p].enterPoint();
     setTimeout(()=>window.scrollTo(0,1),0);
-    //landArrow();
+    if(p!=0) landArrow();
 }
 function transitPage(newP){
     var a = pages[$('body').data('nowPage')];
