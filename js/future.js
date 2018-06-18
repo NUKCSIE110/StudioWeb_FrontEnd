@@ -13,6 +13,11 @@ var pages = [
         'sectionID': '#page3',
         'DarkBg': false,
         'enterPoint': function(){}
+    },
+    {
+        'sectionID': '#page4',
+        'DarkBg': false,
+        'enterPoint': function(){}
     }
 ]
 
@@ -43,6 +48,7 @@ function init(){
     if(pages[p].DarkBg != true){
         $('#nav-arrow').addClass("black");
     }
+    //landArrow();
 }
 function transitPage(a,b){
     $(b.sectionID).css("z-index", "-2");
@@ -64,10 +70,17 @@ function transitPage(a,b){
 }
 
 function landArrow(){
+    if($('#nav-arrow').data("landed") == true) return;
+    $('#nav-arrow').data("landed", true);
     var nowPos = $('#nav-arrow').css("padding-top");
     //console.log(nowPos);
     $('#nav-arrow').removeClass("bounce");
     $('#nav-arrow').css("padding-top", nowPos);
     /* Transit using pure css */
     setTimeout(()=>$('#nav-arrow').css("padding-top", "10vh"), 1);
+    setTimeout(() => {
+        $('#nav-arrow').css("transition", "color 2s");
+        $('#nav-arrow').css("padding-top", "0px");
+        $('#nav-arrow').css("height", "1em");
+    }, 1500);
 }

@@ -8,6 +8,13 @@
     margin-top: 20vh;
 }
 
+#page3 h1{
+    width: 6em;
+    text-align: center;
+    margin-bottom: 5vh;
+    font-size: 5vh;
+}
+
 #page3 .char{
     float: left;
     width: 30vw;
@@ -17,7 +24,7 @@
     cursor: pointer;
 }
 
-#page3 .char:first-child{
+#page3 h1+.char{
     margin-right: 5vw;
 }
 
@@ -32,7 +39,7 @@
 }
 
 #page3 .selected .photo img{
-    box-shadow: 0px 0px 20px rgb(6, 85, 255);
+    box-shadow: 0px 0px 20px rgb(233, 229, 4);
 }
 
 #page3 .name{
@@ -74,11 +81,14 @@
     }
     #page3 .char{
         float: none;
-        width: 40vw;
+        width: 22vh;
         margin: 0 auto;
         margin-top: 5vh;
     }
-    #page3 .char:first-child{
+    #page3 h1{
+        margin-top: 2vh;
+    }
+    #page3 h1+.char{
         margin: 5vh auto 0 auto;
     }    
 }
