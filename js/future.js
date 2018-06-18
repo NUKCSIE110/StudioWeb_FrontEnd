@@ -12,7 +12,18 @@ var pages = [
     {
         'sectionID': '#page3',
         'DarkBg': false,
-        'enterPoint': function(){}
+        'enterPoint': function(){
+            $('#charDaLa').on('click',()=>{
+                $('body').data("char", "DaLa");
+                $('#charDaLa').addClass('selected');
+                $('#charBuDo').removeClass('selected');
+            });
+            $('#charBuDo').on('click',()=>{
+                $('body').data("char", "BuDo");
+                $('#charBuDo').addClass('selected');
+                $('#charDaLa').removeClass('selected');
+            });
+        }
     },
     {
         'sectionID': '#page4',
@@ -48,6 +59,7 @@ function init(){
     if(pages[p].DarkBg != true){
         $('#nav-arrow').addClass("black");
     }
+    pages[p].enterPoint();
     //landArrow();
 }
 function transitPage(a,b){
@@ -66,6 +78,7 @@ function transitPage(a,b){
     if(a.DarkBg != b.DarkBg){
         $('#nav-arrow').toggleClass("black");
     }
+    b.enterPoint();
     landArrow();
 }
 
