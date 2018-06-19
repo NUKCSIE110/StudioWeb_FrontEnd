@@ -54,7 +54,7 @@
         <div class="bg"></div>
         <div class="central">
             <h1 class="central">選個角色吧</h1>
-            <div id="charDaLa" class="char">
+            <div id="charDaLa" class="char" v-bind:class="{'selected': isDaLa}" v-on:click="char='DaLa'">
                 <div class="photo central">
                     <img src="https://fakeimg.pl/300x300/AAA,50?text=DaLa" />
                 </div>
@@ -63,7 +63,7 @@
                     實務型勇者
                 </p>
             </div>
-            <div id="charBuDo" class="char">
+            <div id="charBuDo" class="char" v-bind:class="{'selected': isBuDo}" v-on:click="char='BuDo'">
                 <div class="photo central">
                     <img src="https://fakeimg.pl/300x300/AAA,50?text=BuDo" />
                 </div>
@@ -81,7 +81,7 @@
     <section class="page" id="story2" style="display: none;">
         <div class="bg"></div>
         <p class="central">
-            你選擇了勇者<span></span>的視角<br>
+            你選擇了勇者<span>{{char}}</span>的視角<br>
             接下來你會遇到一連串的試煉<br>
             會害怕是很正常的事情<br>
             如果害怕了就按上一頁吧<br>
@@ -104,7 +104,7 @@
             好好規劃自己的未來吧：）
         </p>
     </section>
-    <i v-on:click="transitPage()" v-bind:class="{'black': arrow.isBlack, 'bounce': arrow.bouncing}" v-bind:style="arrow.css"
+    <i v-on:click="transitPage" v-bind:class="arrow.classes" v-bind:style="arrow.css"
      id='nav-arrow' class="fas fa-chevron-down next-page central"></i>
     </div>
 </body>

@@ -21,23 +21,9 @@ var pages = [
         'DarkBg': false,
         'enterPoint': function(){
             $('#nav-arrow').fadeOut();
-            $('#charDaLa').removeClass('selected');
-            $('#charBuDo').removeClass('selected');
-            $('#charDaLa').on('click',()=>{
-                $('body').data("char", "DaLa");
-                $('#charDaLa').addClass('selected');
-                $('#charBuDo').removeClass('selected');
-                $('#nav-arrow').fadeIn('slow');
-                $('body').data("block-next", false);
-            });
-            $('#charBuDo').on('click',()=>{
-                $('body').data("char", "BuDo");
-                $('#charBuDo').addClass('selected');
-                $('#charDaLa').removeClass('selected');
-                $('#nav-arrow').fadeIn('slow');
-                $('body').data("block-next", false);
-            });
-            $('body').data("block-next", true);
+            game.isDaLa = false;
+            game.isBuDo = false;
+            game.blockNext = true;
         },
         'nextPage': function(){
             return 3;
@@ -47,12 +33,7 @@ var pages = [
         'sectionID': '#story2',
         'DarkBg': true,
         'enterPoint': function(){
-            if($('body').data("char")=="DaLa"){
-                $('#story2 p span').text("達拉崩吧");
-            }
-            if($('body').data("char")=="BuDo"){
-                $('#story2 p span').text("卜多比魯翁");
-            }
+            
         },
         'nextPage': function(){
             return 4;
@@ -77,14 +58,34 @@ function init(){
         data:{
             'scrolling':  false,
             'blockNext': false,
-            'char': '',
             'nowPage': 0,
+            'isDaLa': false,
+            'isBuDo': false,
             'arrow': {
                 'landed': false,
                 'seen': true,
                 'isBlack': false,
                 'bouncing': true,
-                'css': {}
+                'css': {},
+                'classes':{
+                    'black': false,
+                    'bounce': true
+                }
+            }
+        },
+        computed:{
+            'char':{
+                get: function(){
+                    if(this.isDaLa) return "達拉崩吧";
+                    if(this.isBuDo) return "卜多比魯翁";
+                    return undefined;
+                },
+                set: function(x){
+                    this.isDaLa = (x=="DaLa");
+                    this.isBuDo = (x=="BuDo");
+                    $('#nav-arrow').fadeIn('slow');
+                    this.blockNext = false;
+                }
             }
         },
         methods:{
@@ -104,7 +105,7 @@ function init(){
                 setTimeout(()=>$(b.sectionID).css("z-index", ""), 1000);
             
                 if(a.DarkBg != b.DarkBg){
-                    this.arrow.isBlack = !this.arrow.isBlack;
+                    this.arrow.classes['black'] = !this.arrow.classes['black'];
                 }
                 b.enterPoint();
                 this.landArrow();
@@ -113,7 +114,7 @@ function init(){
                 if(this.arrow.landed == true) return;
                 this.arrow.landed = true;
                 var nowPos = $('#nav-arrow').css("padding-top");
-                this.arrow.bouncing = false;
+                this.arrow.classes['bounce'] = false;
                 this.arrow.css['padding-top'] = nowPos;
                 this.$forceUpdate();
                 /* Transit using pure css */
@@ -133,7 +134,7 @@ function init(){
                 $('#page1 h1').text("DALABONBA I");
                 //$('#page1 h1').fadeOut(8000);
                 this.$forceUpdate();
-                toggleFullScreen();
+                setTimeout(toggleFullScreen, 10);
             }
         },
     });
@@ -157,7 +158,7 @@ function init(){
     }
     $(pages[p].sectionID).show();
     if(pages[p].DarkBg != true){
-        game.arrow.isBlack = true;
+        game.arrow.classes['black'] = true;
     }
     pages[p].enterPoint();
     setTimeout(()=>window.scrollTo(0,1),0);
