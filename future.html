@@ -24,12 +24,13 @@
     <title>你的未來</title>
 </head>
 <body>
+    <div id="game">
     <section class="page" id="page1">
         <div class="bg"></div>
         <!--<div class="wave1"></div>
         <div class="wave2"></div>-->
         <h1 class="central">我們來玩個遊戲</h1>
-        <div id="goFS" class="central">進入全螢幕</div>
+        <div id="goFS" v-on:click="fullScreen" class="central">進入全螢幕</div>
     </section>
     <section class="page" id="page2" style="display: none;">
         <div class="bg"></div>
@@ -103,6 +104,8 @@
             好好規劃自己的未來吧：）
         </p>
     </section>
-    <i id='nav-arrow' class="fas fa-chevron-down next-page central bounce"></i>
+    <i v-on:click="transitPage()" v-bind:class="{'black': arrow.isBlack, 'bounce': arrow.bouncing}" v-bind:style="arrow.css"
+     id='nav-arrow' class="fas fa-chevron-down next-page central"></i>
+    </div>
 </body>
 </html>
