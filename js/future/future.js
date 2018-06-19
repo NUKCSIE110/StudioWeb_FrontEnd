@@ -1,4 +1,5 @@
-var game
+var game;
+var arrow;
 var pages = [
     {
         'sectionID': '#page1',
@@ -60,18 +61,7 @@ function init(){
             'blockNext': false,
             'nowPage': 0,
             'isDaLa': false,
-            'isBuDo': false,
-            'arrow': {
-                'landed': false,
-                'seen': true,
-                'isBlack': false,
-                'bouncing': true,
-                'css': {},
-                'classes':{
-                    'black': false,
-                    'bounce': true
-                }
-            }
+            'isBuDo': false
         },
         computed:{
             'char':{
@@ -100,34 +90,15 @@ function init(){
                 // Hide nav arrow on the last page
                 this.nowPage = newP;
                 if(b.nextPage==undefined){
-                    this.arrow.seen = false;
+                    arrow.seen = false;
                 }
                 setTimeout(()=>$(b.sectionID).css("z-index", ""), 1000);
             
                 if(a.DarkBg != b.DarkBg){
-                    this.arrow.classes['black'] = !this.arrow.classes['black'];
+                    arrow.classes['black'] = !arrow.classes['black'];
                 }
                 b.enterPoint();
-                this.landArrow();
-            },
-            'landArrow': function(){
-                if(this.arrow.landed == true) return;
-                this.arrow.landed = true;
-                var nowPos = $('#nav-arrow').css("padding-top");
-                this.arrow.classes['bounce'] = false;
-                this.arrow.css['padding-top'] = nowPos;
-                this.$forceUpdate();
-                /* Transit using pure css */
-                setTimeout(()=>{
-                    this.arrow.css['padding-top']="10vh";
-                    this.$forceUpdate();
-                }, 100);
-                setTimeout(() => {
-                    this.arrow.css['transition'] = "color 2s";
-                    this.arrow.css['padding-top'] = "1em";
-                    this.arrow.css['height'] = "2em";
-                    this.$forceUpdate();
-                }, 1500);
+                arrow.landArrow();
             },
             'fullScreen': function() {
                 $('#goFS').fadeOut();
@@ -136,7 +107,44 @@ function init(){
                 this.$forceUpdate();
                 setTimeout(toggleFullScreen, 10);
             }
+        }
+    });
+
+    arrow = new Vue({
+        el: '#nav-arrow',
+        data:{
+            'landed': false,
+            'seen': true,
+            'css': {},
+            'classes':{
+                'black': false,
+                'bounce': true
+            }
         },
+        methods: {
+            'landArrow': function(){
+                if(this.landed == true) return;
+                this.landed = true;
+                var nowPos = $('#nav-arrow').css("padding-top");
+                this.classes['bounce'] = false;
+                this.css['padding-top'] = nowPos;
+                this.$forceUpdate();
+                /* Transit using pure css */
+                setTimeout(()=>{
+                    this.css['padding-top']="10vh";
+                    this.$forceUpdate();
+                }, 100);
+                setTimeout(() => {
+                    this.css['transition'] = "color 2s";
+                    this.css['padding-top'] = "1em";
+                    this.css['height'] = "2em";
+                    this.$forceUpdate();
+                }, 1500);
+            },
+            'transitPage': function(){
+                game.transitPage();
+            }
+        }
     });
 
     var mc = new Hammer($('body').get(0));
@@ -161,6 +169,6 @@ function init(){
         game.arrow.classes['black'] = true;
     }
     pages[p].enterPoint();
-    setTimeout(()=>window.scrollTo(0,1),0);
+    //setTimeout(()=>window.scrollTo(0,1),0);
     if(p!=0) game.landArrow();
 }
