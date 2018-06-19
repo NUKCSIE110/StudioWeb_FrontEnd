@@ -69,6 +69,21 @@ var pages = [
     }
 ]
 
+function toggleFullScreen() {
+    var doc = window.document;
+    var docEl = doc.documentElement;
+  
+    var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
+    var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
+  
+    if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
+        requestFullScreen.call(docEl);
+    }
+    else {
+        cancelFullScreen.call(doc);
+    }
+}
+
 $(document).ready(init);
 function init(){
     $('body').data('scrolling', false);
@@ -112,6 +127,13 @@ function init(){
     pages[p].enterPoint();
     setTimeout(()=>window.scrollTo(0,1),0);
     if(p!=0) landArrow();
+
+    $('#goFS').on("click", function() {
+        $('#goFS').fadeOut();
+        $('#page1 h1').text("DALABONBA I");
+        $('#page1 h1').fadeOut(8000);
+        toggleFullScreen();
+    });
 }
 function transitPage(newP){
     var a = pages[$('body').data('nowPage')];

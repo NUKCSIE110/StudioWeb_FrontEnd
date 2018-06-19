@@ -31,6 +31,18 @@
     border-radius: 0.2em;
 }
 
+#goFS{
+    width: 7em;
+    height: 2em;
+    padding-top: 0.5em;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 2vh;
+    background-color: white;
+    border-radius: 1vh;
+    cursor: pointer;
+}
+
 /*
 @keyframes wave{
     0%{margin-left: 10px; margin-top: 0px;}
