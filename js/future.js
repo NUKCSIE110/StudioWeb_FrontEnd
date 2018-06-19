@@ -51,6 +51,16 @@ var pages = [
             }
         },
         'nextPage': function(){
+            return 4;
+        }
+    },
+    {
+        'sectionID': '#end',
+        'DarkBg': true,
+        'enterPoint': function(){
+            
+        },
+        'nextPage': function(){
             return 0;
         }
     }

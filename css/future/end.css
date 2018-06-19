@@ -1,0 +1,19 @@
+#end .bg::before{
+    background: #1A1A1A;
+    filter:none;
+}
+
+#end p{
+    width: 15em;
+    font-size: 30px;
+    margin-top: calc( 50vh - 10.5em);
+    line-height: 1.3em;
+    color: white;
+}
+
+@media only screen and (max-width: 960px){
+    #end p{
+        font-size: 5vw;
+        width: 15em;
+    }
+}
