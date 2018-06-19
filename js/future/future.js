@@ -1,56 +1,6 @@
 var game;
 var arrow;
-var pages = {
-    'page1': {
-        'sectionID': '#page1',
-        'DarkBg': true,
-        'enterPoint': function(){},
-        'nextPage': function(){
-            return 'story1';
-        }
-    },
-    'story1': {
-        'sectionID': '#story1',
-        'DarkBg': false,
-        'enterPoint': function(){},
-        'nextPage': function(){
-            return 'charSel';
-        }
-    },
-    'charSel': {
-        'sectionID': '#charSel',
-        'DarkBg': false,
-        'enterPoint': function(){
-            $('#nav-arrow').fadeOut();
-            game.isDaLa = false;
-            game.isBuDo = false;
-            game.blockNext = true;
-        },
-        'nextPage': function(){
-            return 'story2';
-        }
-    },
-    'story2': {
-        'sectionID': '#story2',
-        'DarkBg': true,
-        'enterPoint': function(){
-            
-        },
-        'nextPage': function(){
-            return 'end';
-        }
-    },
-    'end': {
-        'sectionID': '#end',
-        'DarkBg': true,
-        'enterPoint': function(){
-            
-        },
-        'nextPage': function(){
-            return 'page1';
-        }
-    }
-}
+var pages = {};
 
 $(document).ready(init);
 function init(){
