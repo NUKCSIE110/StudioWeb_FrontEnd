@@ -6,7 +6,7 @@
 #story2 p{
     width: 15em;
     font-size: 30px;
-    margin-top: calc( 50vh - 10.5em);
+    margin-top: calc( 50vh - 8em);
     line-height: 1.3em;
     color: white;
 }

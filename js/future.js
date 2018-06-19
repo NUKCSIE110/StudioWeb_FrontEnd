@@ -27,13 +27,16 @@ var pages = [
                 $('#charDaLa').addClass('selected');
                 $('#charBuDo').removeClass('selected');
                 $('#nav-arrow').fadeIn('slow');
+                $('body').data("block-next", false);
             });
             $('#charBuDo').on('click',()=>{
                 $('body').data("char", "BuDo");
                 $('#charBuDo').addClass('selected');
                 $('#charDaLa').removeClass('selected');
                 $('#nav-arrow').fadeIn('slow');
+                $('body').data("block-next", false);
             });
+            $('body').data("block-next", true);
         },
         'nextPage': function(){
             return 3;
@@ -68,17 +71,30 @@ var pages = [
 
 $(document).ready(init);
 function init(){
-    /*$(window).bind('mousewheel', function(e){
-        if(!($('body').data('scrolling') || false)){
+    $('body').data('scrolling', false);
+    $('body').data('block-next', false);
+    setTimeout(()=>{
+    var mc = new Hammer($('body').get(0));
+    mc.get('pan').set({ direction: Hammer.DIRECTION_UP });
+    mc.on("panup", function(ev) {
+        if(!$('body').data('scrolling') && !$('body').data('block-next')){
             $('body').data('scrolling', true);
-            if(e.originalEvent.wheelDelta /120 > 0) {
-                console.log('scrolling up !');
-            }
-            else{
-                console.log('scrolling down !');
+            transitPage(pages[$('body').data('nowPage')].nextPage());
+            setTimeout(()=>{
+                $('body').data('scrolling', false);
+            }, 1000);
+        }
+    });
+    },2000);
+    /*$(window).bind('scroll', function(e){
+        if(!$('body').data('scrolling') && !$('body').data('block-next')){
+            $('body').data('scrolling', true);
+            //setTimeout(()=>{
                 transitPage(pages[$('body').data('nowPage')].nextPage());
-            }
-            setTimeout(()=>{$('body').data('scrolling', false)}, 400);
+            //}, 0);
+            setTimeout(()=>{
+                $('body').data('scrolling', false);
+            }, 1000);
         }
     });*/
     $('.next-page').on('click',function(){
