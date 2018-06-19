@@ -1,9 +1,9 @@
-#page2 .bg::before{
+#story1 .bg::before{
     background: #FFF;
     filter:none;
 }
 
-#page2 p{
+#story1 p{
     width: 16em;
     font-size: 30px;
     margin-top: calc( 50vh - 10.5em);
@@ -11,7 +11,7 @@
 }
 
 @media only screen and (max-width: 960px){
-    #page2 p{
+    #story1 p{
         font-size: 5vw;
         width: 16em;
     }

@@ -1,24 +1,24 @@
 var game;
 var arrow;
-var pages = [
-    {
+var pages = {
+    'page1': {
         'sectionID': '#page1',
         'DarkBg': true,
         'enterPoint': function(){},
         'nextPage': function(){
-            return 1;
+            return 'story1';
         }
     },
-    {
-        'sectionID': '#page2',
+    'story1': {
+        'sectionID': '#story1',
         'DarkBg': false,
         'enterPoint': function(){},
         'nextPage': function(){
-            return 2;
+            return 'charSel';
         }
     },
-    {
-        'sectionID': '#page3',
+    'charSel': {
+        'sectionID': '#charSel',
         'DarkBg': false,
         'enterPoint': function(){
             $('#nav-arrow').fadeOut();
@@ -27,30 +27,30 @@ var pages = [
             game.blockNext = true;
         },
         'nextPage': function(){
-            return 3;
+            return 'story2';
         }
     },
-    {
+    'story2': {
         'sectionID': '#story2',
         'DarkBg': true,
         'enterPoint': function(){
             
         },
         'nextPage': function(){
-            return 4;
+            return 'end';
         }
     },
-    {
+    'end': {
         'sectionID': '#end',
         'DarkBg': true,
         'enterPoint': function(){
             
         },
         'nextPage': function(){
-            return 0;
+            return 'page1';
         }
     }
-]
+}
 
 $(document).ready(init);
 function init(){
@@ -68,7 +68,7 @@ function init(){
                 get: function(){
                     if(this.isDaLa) return "達拉崩吧";
                     if(this.isBuDo) return "卜多比魯翁";
-                    return undefined;
+                    return "undefined";
                 },
                 set: function(x){
                     this.isDaLa = (x=="DaLa");
@@ -85,7 +85,7 @@ function init(){
                 var b = pages[newP];
                 $(b.sectionID).css("z-index", "-2");
                 $(b.sectionID).show();
-                $(a.sectionID).slideUp(1000)
+                $(a.sectionID).slideUp(1000);
                 
                 // Hide nav arrow on the last page
                 this.nowPage = newP;
@@ -128,12 +128,14 @@ function init(){
                 var nowPos = $('#nav-arrow').css("padding-top");
                 this.classes['bounce'] = false;
                 this.css['padding-top'] = nowPos;
-                this.$forceUpdate();
+                this.$forceUpdate(); // It does need to update the view
+                
                 /* Transit using pure css */
                 setTimeout(()=>{
                     this.css['padding-top']="10vh";
                     this.$forceUpdate();
                 }, 100);
+                
                 setTimeout(() => {
                     this.css['transition'] = "color 2s";
                     this.css['padding-top'] = "1em";
@@ -147,6 +149,7 @@ function init(){
         }
     });
 
+    /* Register panning event for mobile */
     var mc = new Hammer($('body').get(0));
     mc.get('pan').set({ direction: Hammer.DIRECTION_UP });
     mc.on("panup", function(ev) {
@@ -159,16 +162,13 @@ function init(){
         }
     });
 
-    var p = window.location.hash.substr(1) || 0;
+    /* Get page number from anchor */
+    var p = window.location.hash.substr(1) || 'page1';
     game.nowPage = p;
-    for(var i of pages){
-        $(i.sectionID).hide();
-    }
     $(pages[p].sectionID).show();
     if(pages[p].DarkBg != true){
-        game.arrow.classes['black'] = true;
+        arrow.classes['black'] = true;
     }
     pages[p].enterPoint();
-    //setTimeout(()=>window.scrollTo(0,1),0);
-    if(p!=0) game.landArrow();
+    if(p!='page1') arrow.landArrow();
 }

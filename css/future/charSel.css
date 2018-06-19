@@ -1,21 +1,21 @@
-#page3 .bg::before{
+#charSel .bg::before{
     background: #FFF;
     filter:none;
 }
 
-#page3>.central{
+#charSel>.central{
     width: 65vw;
     margin-top: 20vh;
 }
 
-#page3 h1{
+#charSel h1{
     width: 6em;
     text-align: center;
     margin-bottom: 5vh;
     font-size: 5vh;
 }
 
-#page3 .char{
+#charSel .char{
     float: left;
     width: 30vw;
     box-sizing: border-box;
@@ -24,60 +24,60 @@
     cursor: pointer;
 }
 
-#page3 h1+.char{
+#charSel h1+.char{
     margin-right: 5vw;
 }
 
-#page3 .photo{
+#charSel .photo{
     max-width: 300px;
 }
 
-#page3 .photo img{
+#charSel .photo img{
     border-radius: 50%;
     width: 100%;
     height: 100%;
 }
 
-#page3 .selected .photo img{
+#charSel .selected .photo img{
     box-shadow: 0px 0px 20px rgb(233, 229, 4);
 }
 
-#page3 .char:not(.selected):hover .photo img{
+#charSel .char:not(.selected):hover .photo img{
     box-shadow: 0px 0px 20px rgb(24, 74, 238);
 }
 
-#page3 .name{
+#charSel .name{
     font-size: 5vh;
     margin-top: 0.5em;
 }
 
-#page3 .discription{
+#charSel .discription{
     font-size: 2vh;
     margin-top: 1em;
 }
 
 @media only screen and (max-width: 1000px){
-    #page3 .name{
+    #charSel .name{
         font-size: 5vw;
     }
 }
 @media only screen and (max-width: 756px){
-    #page3>.central{
+    #charSel>.central{
         margin-top: 0;
     }
-    #page3 .char{
+    #charSel .char{
         float: none;
         width: 40vw;
         margin: 0 auto;
         margin-top: 5vh;
     }
-    #page3 h1{
+    #charSel h1{
         margin-top: 4vh;
     }
-    #page3 h1+.char{
+    #charSel h1+.char{
         margin: 5vh auto 0 auto;
     }
-    #page3 .char{
+    #charSel .char{
         cursor: inherit;
     }   
 }
