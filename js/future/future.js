@@ -32,19 +32,24 @@ function init(){
         },
         methods:{
             'transitPage': function (){
+                if(this.blockNext) return;
+                this.blockNext = true;
                 var a = pages[this.nowPage];
                 var newP = a.nextPage();
                 var b = pages[newP];
                 $(b.sectionID).css("z-index", "-2");
                 $(b.sectionID).show();
-                $(a.sectionID).slideUp(1000);
+                $(a.sectionID).slideUp(700);
                 
                 // Hide nav arrow on the last page
                 this.nowPage = newP;
                 if(b.nextPage==undefined){
                     arrow.seen = false;
                 }
-                setTimeout(()=>$(b.sectionID).css("z-index", ""), 1000);
+                setTimeout(()=>{
+                    game.blockNext = false;
+                    $(b.sectionID).css("z-index", "")
+                }, 1000);
             
                 if(a.DarkBg != b.DarkBg){
                     Vue.nextTick(()=>{arrow.black = !arrow.black});
