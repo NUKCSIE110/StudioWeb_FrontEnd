@@ -20,10 +20,12 @@ pages['charSel'] = {
     'sectionID': '#charSel',
     'DarkBg': false,
     'enterPoint': function(){
-        $('#nav-arrow').fadeOut();
-        game.isDaLa = false;
-        game.isBuDo = false;
         game.blockNext = true;
+        Vue.nextTick(()=>{
+            arrow.seen = false;
+            game.isDaLa = false;
+            game.isBuDo = false;
+        });
     },
     'nextPage': function(){
         return 'story2';

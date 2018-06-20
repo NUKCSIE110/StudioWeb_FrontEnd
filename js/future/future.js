@@ -11,7 +11,9 @@ function init(){
             'blockNext': false,
             'nowPage': 0,
             'isDaLa': false,
-            'isBuDo': false
+            'isBuDo': false,
+            'seenFgBtn': true,
+            'title': "我們來玩個遊戲"
         },
         computed:{
             'char':{
@@ -23,7 +25,7 @@ function init(){
                 set: function(x){
                     this.isDaLa = (x=="DaLa");
                     this.isBuDo = (x=="BuDo");
-                    $('#nav-arrow').fadeIn('slow');
+                    arrow.seen = true;
                     this.blockNext = false;
                 }
             }
@@ -45,16 +47,14 @@ function init(){
                 setTimeout(()=>$(b.sectionID).css("z-index", ""), 1000);
             
                 if(a.DarkBg != b.DarkBg){
-                    arrow.classes['black'] = !arrow.classes['black'];
+                    Vue.nextTick(()=>{arrow.black = !arrow.black});
                 }
                 b.enterPoint();
                 arrow.landArrow();
             },
             'fullScreen': function() {
-                $('#goFS').fadeOut();
-                $('#page1 h1').text("DALABONBA I");
-                //$('#page1 h1').fadeOut(8000);
-                this.$forceUpdate();
+                this.seenFgBtn = false;
+                this.title = "DALABONBA I";
                 setTimeout(toggleFullScreen, 10);
             }
         }
@@ -64,34 +64,30 @@ function init(){
         el: '#nav-arrow',
         data:{
             'landed': false,
-            'seen': true,
+            'seen': false,
             'css': {},
-            'classes':{
-                'black': false,
-                'bounce': true
-            }
+            'black': false,
+            'bounce': true
         },
         methods: {
             'landArrow': function(){
                 if(this.landed == true) return;
-                this.landed = true;
-                var nowPos = $('#nav-arrow').css("padding-top");
-                this.classes['bounce'] = false;
+                this.bounce = false;
+                var nowPos = $('#nav-arrow i').css("padding-top");
                 this.css['padding-top'] = nowPos;
-                this.$forceUpdate(); // It does need to update the view
-                
-                /* Transit using pure css */
-                setTimeout(()=>{
-                    this.css['padding-top']="10vh";
-                    this.$forceUpdate();
-                }, 100);
-                
-                setTimeout(() => {
-                    this.css['transition'] = "color 2s";
-                    this.css['padding-top'] = "1em";
-                    this.css['height'] = "2em";
-                    this.$forceUpdate();
-                }, 1500);
+                this.$nextTick(()=>{this.landed = true});
+            },
+            'beforeLand': function(el){
+                this.transitPage();
+            },
+            'landing': function(el, done){
+                Velocity(el, {'padding-top': '10vh', 'color': 'black'},
+                    { complete: done, easing: "linear" });
+            },
+            'afterLanded': function(){
+                this.css['padding-top'] = "1em";
+                this.css['height'] = "2em";
+                this.seen = true;
             },
             'transitPage': function(){
                 game.transitPage();
